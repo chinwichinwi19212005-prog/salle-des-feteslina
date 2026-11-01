@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>قاعة الحفلات لينا | بئر توتة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#0f1b3d;
+    --night-deep:#0a1330;
+    --gold:#c9a24b;
+    --gold-soft:#e4cf9b;
+    --ivory:#f6f0e2;
+    --muted:#b9c0d4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Tajawal",system-ui,sans-serif;
+    background:var(--night);
+    color:var(--ivory);
+    line-height:1.9;
+    min-height:100vh;
+  }
+  [hidden]{display:none!important}
+  a{color:inherit;text-decoration:none}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:20;
+    background:rgba(10,19,48,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(201,162,75,.25);
+  }
+  .bar{
+    max-width:1200px;margin:auto;padding:10px 24px;
+    display:flex;align-items:center;gap:32px;
+  }
+  .brand img{height:64px;width:auto;display:block}
+  .brand-fallback{font-family:"Amiri",serif;font-size:1.4rem;color:var(--gold)}
+  nav{margin-inline-start:auto}
+  nav ul{list-style:none;display:flex;gap:30px}
+  nav a{
+    font-size:1.05rem;padding:6px 0;
+    border-bottom:2px solid transparent;
+    transition:border-color .2s,color .2s;
+  }
+  nav a:hover,nav a[aria-current="page"]{color:var(--gold-soft);border-color:var(--gold)}
+  .login{
+    border:1px solid var(--gold);color:var(--gold-soft);
+    padding:6px 18px;border-radius:999px;font-size:.95rem;
+    transition:background .2s,color .2s;
+  }
+  .login:hover{background:var(--gold);color:var(--night-deep)}
+  .menu-btn{
+    display:none;background:none;border:1px solid var(--gold);color:var(--gold);
+    width:42px;height:42px;border-radius:8px;font-size:1.3rem;cursor:pointer;
+  }
+
+  /* ---------- Hero background ---------- */
+  .hero-bg{
+    background:
+      linear-gradient(180deg,rgba(10,19,48,.78) 0%,rgba(15,27,61,.86) 70%,var(--night) 100%),
+      url("images/hero-bg.jpg") center 35%/cover no-repeat;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    max-width:1200px;margin:auto;
+    padding:64px 24px 80px;
+    display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;
+  }
+  .hero h1{
+    font-family:"Amiri",serif;font-weight:700;
+    font-size:clamp(2.2rem,4.6vw,3.8rem);
+    line-height:1.35;
+    color:var(--ivory);
+    margin-bottom:22px;
+  }
+  .hero p{
+    color:var(--muted);font-size:1.12rem;max-width:56ch;margin-bottom:34px;
+  }
+  .hero p strong{color:var(--gold-soft);font-weight:500}
+  .actions{display:flex;flex-wrap:wrap;gap:14px}
+  .btn{
+    display:inline-block;padding:13px 30px;border-radius:999px;
+    font-weight:700;font-size:1.05rem;border:1px solid var(--gold);
+    transition:transform .15s,background .2s,color .2s;
+  }
+  .btn:active{transform:scale(.97)}
+  .btn-gold{background:var(--gold);color:var(--night-deep)}
+  .btn-gold:hover{background:var(--gold-soft)}
+  .btn-line{color:var(--gold-soft)}
+  .btn-line:hover{background:rgba(201,162,75,.14)}
+
+  /* The memorable element: the hall seen through an arch */
+  .arch{
+    position:relative;justify-self:center;
+    width:min(100%,400px);aspect-ratio:3/4.1;
+    border-radius:999px 999px 14px 14px;
+    padding:10px;
+    border:1.5px solid var(--gold);
+  }
+  .arch-inner{
+    width:100%;height:100%;overflow:hidden;
+    border-radius:999px 999px 8px 8px;
+    background:linear-gradient(160deg,#1b2b5c,#0a1330);
+  }
+  .arch-inner img{width:100%;height:100%;object-fit:cover;display:block}
+  .arch-note{
+    position:absolute;left:50%;bottom:-18px;transform:translateX(-50%);
+    background:var(--night);border:1px solid var(--gold);color:var(--gold-soft);
+    padding:6px 20px;border-radius:999px;font-size:.95rem;white-space:nowrap;
+  }
+
+  /* ---------- Services strip ---------- */
+  .services{
+    background:var(--night-deep);
+    border-block:1px solid rgba(201,162,75,.2);
+  }
+  .services ul{
+    max-width:1200px;margin:auto;padding:22px 24px;list-style:none;
+    display:flex;flex-wrap:wrap;justify-content:center;gap:12px 40px;
+    font-family:"Amiri",serif;font-size:1.3rem;color:var(--gold-soft);
+  }
+
+  footer{
+    text-align:center;padding:34px 24px 26px;color:var(--muted);font-size:.92rem;
+    border-top:1px solid rgba(201,162,75,.2);
+  }
+  .contact-links{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 34px;margin-bottom:16px}
+  .contact-links a{
+    display:inline-flex;align-items:center;gap:8px;
+    color:var(--gold-soft);font-size:1.02rem;
+    border-bottom:1px solid transparent;transition:border-color .2s;
+  }
+  .contact-links a:hover{border-color:var(--gold)}
+
+  /* ---------- Section heads ---------- */
+  .section{max-width:1200px;margin:auto;padding:84px 24px 20px;scroll-margin-top:90px}
+  .section h2{
+    font-family:"Amiri",serif;font-size:clamp(1.9rem,3.4vw,2.8rem);
+    line-height:1.4;margin-bottom:10px;
+  }
+  .section .lead{color:var(--muted);max-width:56ch;margin-bottom:34px}
+
+  /* ---------- Gallery ---------- */
+  .grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    grid-auto-rows:220px;gap:14px;grid-auto-flow:dense;
+  }
+  .shot{
+    position:relative;overflow:hidden;cursor:zoom-in;
+    border:1px solid rgba(201,162,75,.3);border-radius:14px;padding:0;
+    background:linear-gradient(160deg,#1b2b5c,#0a1330);
+  }
+  .shot.tall{grid-row:span 2}
+  .shot.wide{grid-column:span 2}
+  .shot img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+  .shot:hover img{transform:scale(1.05)}
+  dialog.lightbox{
+    border:1px solid var(--gold);border-radius:14px;background:var(--night-deep);
+    padding:10px;max-width:min(92vw,1000px);margin:auto;
+  }
+  dialog.lightbox::backdrop{background:rgba(5,9,24,.88)}
+  dialog.lightbox img{display:block;max-width:100%;max-height:80vh;border-radius:8px;margin:auto}
+  dialog.lightbox button{
+    position:absolute;top:8px;inset-inline-start:8px;
+    background:var(--night);color:var(--gold-soft);border:1px solid var(--gold);
+    width:38px;height:38px;border-radius:50%;font-size:1.2rem;cursor:pointer;
+  }
+
+  /* ---------- Prices ---------- */
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+  .plan{
+    background:var(--night-deep);border:1px solid rgba(201,162,75,.3);
+    border-radius:18px;padding:30px 26px;display:flex;flex-direction:column;gap:14px;
+  }
+  .plan.featured{border:2px solid var(--gold);background:linear-gradient(180deg,#14224d,#0a1330)}
+  .plan h3{font-family:"Amiri",serif;font-size:1.6rem;color:var(--gold-soft)}
+  .plan .cap{display:flex;flex-direction:column;gap:2px;padding:10px 14px;border-radius:12px;
+    background:rgba(201,162,75,.12);border:1px solid rgba(201,162,75,.35)}
+  .plan .cap strong{font-size:1.25rem;color:var(--ivory)}
+  .plan .cap span{color:var(--gold-soft);font-size:.95rem}
+  .plan .price{font-size:1.9rem;font-weight:700}
+  .plan .price small{font-size:.95rem;font-weight:400;color:var(--muted)}
+  .plan ul{list-style:none;display:grid;gap:8px;color:var(--muted);flex:1}
+  .plan li{padding-inline-start:22px;position:relative}
+  .plan li::before{content:"✓";position:absolute;inset-inline-start:0;color:var(--gold)}
+  .plan .btn{text-align:center}
+  .note{margin-top:18px;color:var(--muted);font-size:.92rem}
+
+  /* ---------- Booking ---------- */
+  .booking{
+    max-width:1200px;margin:auto;padding:84px 24px;
+    display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start;
+    scroll-margin-top:90px;
+  }
+  .booking h2{
+    font-family:"Amiri",serif;font-size:clamp(1.9rem,3.4vw,2.8rem);
+    line-height:1.4;margin-bottom:16px;
+  }
+  .booking .intro p{color:var(--muted);max-width:42ch}
+  .booking .steps{list-style:none;margin-top:26px;display:grid;gap:12px;color:var(--gold-soft)}
+  .booking .steps li{padding-inline-start:18px;border-inline-start:2px solid var(--gold)}
+
+  form.card{
+    background:var(--night-deep);
+    border:1px solid rgba(201,162,75,.35);
+    border-radius:18px;padding:32px;
+    display:grid;grid-template-columns:1fr 1fr;gap:20px;
+  }
+  .field{display:flex;flex-direction:column;gap:6px}
+  .field.full{grid-column:1/-1}
+  label{font-size:.98rem;color:var(--gold-soft)}
+  input,select,textarea{
+    font:inherit;color:var(--ivory);
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(201,162,75,.3);
+    border-radius:10px;padding:11px 14px;width:100%;
+    transition:border-color .2s,background .2s;
+  }
+  input::placeholder,textarea::placeholder{color:#7f89a8}
+  select option{background:var(--night);color:var(--ivory)}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);background:rgba(255,255,255,.09)}
+  input:user-invalid,select:user-invalid{border-color:#e08a7a}
+  input[type="date"]{color-scheme:dark}
+  textarea{resize:vertical;min-height:90px}
+  .submit-row{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+  .submit-row button{
+    font:inherit;font-weight:700;cursor:pointer;
+    background:#25a244;color:#fff;border:0;border-radius:999px;
+    padding:13px 30px;font-size:1.05rem;transition:background .2s,transform .15s;
+  }
+  .submit-row button:hover{background:#1f8c3a}
+  .submit-row button:active{transform:scale(.97)}
+  .hint{color:var(--muted);font-size:.92rem}
+  .status{grid-column:1/-1;color:var(--gold-soft);min-height:1.5em}
+
+  .wa-float{
+    position:fixed;bottom:20px;inset-inline-start:20px;z-index:30;
+    background:#25a244;color:#fff;border-radius:999px;
+    padding:11px 20px;font-weight:700;
+    box-shadow:0 6px 18px rgba(0,0,0,.35);
+  }
+  .wa-float:hover{background:#1f8c3a}
+
+  /* ---------- Auth dialog ---------- */
+  dialog.auth{
+    border:1px solid var(--gold);border-radius:18px;background:var(--night-deep);color:var(--ivory);
+    width:min(92vw,420px);padding:26px;margin:auto;
+  }
+  dialog.auth::backdrop{background:rgba(5,9,24,.88)}
+  .auth-close{
+    position:absolute;top:12px;inset-inline-start:12px;
+    background:none;color:var(--gold-soft);border:1px solid var(--gold);
+    width:34px;height:34px;border-radius:50%;font-size:1.05rem;cursor:pointer;
+  }
+  .auth h3{font-family:"Amiri",serif;font-size:1.7rem;margin:6px 0 16px;color:var(--gold-soft)}
+  .auth form,.auth .account{display:grid;gap:14px}
+  .auth [hidden]{display:none!important}
+  .auth .tabs{display:flex;gap:8px;margin:0 0 6px}
+  .auth .tabs button{
+    flex:1;font:inherit;cursor:pointer;color:var(--muted);
+    background:none;border:0;border-bottom:2px solid transparent;padding:8px 0;
+  }
+  .auth .tabs button[aria-selected="true"]{color:var(--gold-soft);border-color:var(--gold)}
+  .auth .btn{width:100%;font:inherit;font-weight:700;cursor:pointer}
+  .auth .msg{min-height:1.4em;font-size:.95rem;color:#f0a898}
+  .auth .msg.ok{color:var(--gold-soft)}
+  .auth .fine{color:var(--muted);font-size:.85rem}
+  .auth dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;color:var(--muted)}
+  .auth dd{color:var(--ivory);word-break:break-word}
+
+  /* ---------- My account ---------- */
+  .acc-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+  .box{
+    background:var(--night-deep);border:1px solid rgba(201,162,75,.35);
+    border-radius:18px;padding:28px;
+  }
+  .box h3{font-family:"Amiri",serif;font-size:1.5rem;color:var(--gold-soft);margin-bottom:14px}
+  .box.login-needed{max-width:560px;display:grid;gap:16px;justify-items:start}
+  #profileForm{border:0;padding:0;background:none}
+  #profileForm .btn{font:inherit;font-weight:700;cursor:pointer}
+  #profileForm .submit-row button{background:var(--gold);color:var(--night-deep)}
+  #profileForm .submit-row button:hover{background:var(--gold-soft)}
+  #profileForm input[readonly]{opacity:.7;cursor:not-allowed}
+  .bk-list{list-style:none;display:grid;gap:12px}
+  .bk{
+    border:1px solid rgba(201,162,75,.3);border-radius:12px;padding:14px 16px;
+    display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center;
+  }
+  .bk strong{font-size:1.1rem}
+  .bk .meta{color:var(--muted);font-size:.93rem;grid-column:1}
+  .bk .badge{
+    justify-self:start;grid-column:1;margin-top:4px;font-size:.85rem;color:var(--gold-soft);
+    background:rgba(201,162,75,.14);border:1px solid rgba(201,162,75,.4);border-radius:999px;padding:1px 12px;
+  }
+  .bk .del{
+    grid-column:2;grid-row:1/span 3;font:inherit;cursor:pointer;color:var(--muted);
+    background:none;border:1px solid rgba(185,192,212,.4);border-radius:999px;padding:5px 14px;
+  }
+  .bk .del.sure{color:#f0a898;border-color:#f0a898}
+  .empty{color:var(--muted)}
+
+  /* ---------- Mobile ---------- */
+  @media (max-width:860px){
+    .grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px}
+    .shot.wide{grid-column:span 2}
+    .plans{grid-template-columns:1fr}
+    .acc-grid{grid-template-columns:1fr}
+    .section{padding-top:56px}
+    .booking{grid-template-columns:1fr;gap:34px;padding-block:56px}
+    form.card{grid-template-columns:1fr;padding:22px}
+    .menu-btn{display:block;order:2}
+    .lang-btn{margin-inline-start:auto;order:1}
+    nav{
+      position:absolute;top:100%;inset-inline:0;
+      background:var(--night-deep);
+      border-bottom:1px solid rgba(201,162,75,.25);
+      display:none;padding:10px 24px 20px;
+    }
+    nav.open{display:block}
+    nav ul{flex-direction:column;gap:6px}
+    .login{display:none}
+    nav .login-m{display:inline-block;margin-top:12px}
+    .hero{grid-template-columns:1fr;gap:48px;padding-top:36px}
+    .arch{order:-1;width:min(80%,320px)}
+  }
+  @media (min-width:861px){ .login-m{display:none} }
+
+  /* ---------- Language switch ---------- */
+  .lang-btn{
+    font:inherit;font-size:.95rem;cursor:pointer;white-space:nowrap;
+    background:none;color:var(--gold-soft);
+    border:1px solid rgba(201,162,75,.55);border-radius:999px;padding:6px 16px;
+    transition:background .2s,color .2s;
+  }
+  .lang-btn:hover{background:var(--gold);color:var(--night-deep)}
+  html[lang="fr"] .hero h1,
+  html[lang="fr"] .section h2,
+  html[lang="fr"] .booking h2,
+  html[lang="fr"] .plan h3,
+  html[lang="fr"] .box h3,
+  html[lang="fr"] .auth h3,
+  html[lang="fr"] .services ul{font-family:"Cormorant Garamond","Amiri",serif}
+  html[lang="fr"] .hero h1{font-size:clamp(2.4rem,4.8vw,4rem);line-height:1.15}
+  html[lang="fr"] .services ul{font-size:1.45rem}
+  @media (max-width:1060px){
+    .bar{gap:16px}
+    nav ul{gap:16px}
+    nav a{font-size:.98rem}
+  }
+  @media (prefers-reduced-motion:reduce){ *{transition:none!important;scroll-behavior:auto!important} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="brand" href="#" aria-label="قاعة الحفلات لينا">
+      <!-- ضع ملف اللوغو في images/logo.png -->
+      <img src="images/logo.png" alt="Salle des Fêtes Lina"
+           onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'brand-fallback',textContent:'Salle des Fêtes Lina'}))">
+    </a>
+
+    <button class="menu-btn" aria-label="القائمة" aria-expanded="false" id="menuBtn">☰</button>
+
+    <nav id="nav" aria-label="القائمة الرئيسية">
+      <ul>
+        <li><a href="#" aria-current="page">الرئيسية</a></li>
+        <li><a href="#gallery">المعرض</a></li>
+        <li><a href="#booking">الحجز</a></li>
+        <li><a href="#account">حسابي</a></li>
+        <li><a href="#prices">الأسعار</a></li>
+        <li><a href="#contact">تواصل معنا</a></li>
+      </ul>
+      <a class="login login-m" href="#" data-auth>تسجيل الدخول</a>
+    </nav>
+
+    <button class="lang-btn" id="langBtn" type="button" lang="fr" aria-label="Français">Français</button>
+
+    <a class="login" href="#" data-auth>تسجيل الدخول</a>
+  </div>
+</header>
+
+<main>
+  <div class="hero-bg">
+  <section class="hero">
+    <div>
+      <h1>أفضل قاعة حفلات في المنطقة، بدون منازع</h1>
+      <p data-i18n-html="heroP">
+        في قلب <strong>بئر توتة</strong>، حيث تتجمع العائلة وتكتمل الفرحة، تقف قاعة لينا
+        كوجهة مميزة لكل من يبحث عن مناسبة تُحكى تفاصيلها طويلاً. من أول خطوة يدخلها العروسان
+        إلى آخر ضحكة في ختام الحفل، نهتم بأدق التفاصيل.
+      </p>
+      <div class="actions">
+        <a class="btn btn-gold" href="#booking">احجز موعدك</a>
+        <a class="btn btn-line" href="#gallery">شاهد القاعة</a>
+      </div>
+    </div>
+
+    <div class="arch">
+      <div class="arch-inner">
+        <!-- ضع صورة القاعة في images/salle.jpg -->
+        <img src="images/salle.jpg" alt="قاعة لينا من الداخل">
+      </div>
+      <span class="arch-note">قاعة لينا، بئر توتة</span>
+    </div>
+  </section>
+  </div>
+
+  <section class="services" aria-label="مناسباتنا">
+    <ul>
+      <li>أعراس</li>
+      <li>خطوبة</li>
+      <li>أعياد ميلاد</li>
+      <li>ختان</li>
+      <li>حفلات تخرج</li>
+    </ul>
+  </section>
+
+  <section class="section" id="gallery">
+    <h2>المعرض</h2>
+    <p class="lead">القاعة، الموائد، وأطباق مطبخنا. اضغط على أي صورة لتكبيرها.</p>
+    <div class="grid">
+      <button class="shot tall" data-src="images/f4.jpg"><img src="images/f4.jpg" alt="مائدة مجهزة بالأطباق والخبز" loading="lazy" ></button>
+      <button class="shot wide" data-src="images/f5.jpg"><img src="images/f5.jpg" alt="فريق المطبخ" loading="lazy" style="object-position:center 12%"></button>
+      <button class="shot" data-src="images/f1.jpg"><img src="images/f1.jpg" alt="طبق سلطة مزين بالورود" loading="lazy" ></button>
+      <button class="shot" data-src="images/f3.jpg"><img src="images/f3.jpg" alt="طبق اللحم بالزيتون والكفتة المحشوة" loading="lazy" ></button>
+      <button class="shot" data-src="images/f2.jpg"><img src="images/f2.jpg" alt="صفوف أطباق السلطة" loading="lazy" ></button>
+      <button class="shot" data-src="images/f6.jpg"><img src="images/f6.jpg" alt="حلوى بالمكسرات مع العسل" loading="lazy" ></button>
+      <button class="shot" data-src="images/f7.jpg"><img src="images/f7.jpg" alt="حلوى بالمكسرات والكراميل" loading="lazy" style="object-position:center 55%"></button>
+    </div>
+    <dialog class="lightbox" id="lightbox">
+      <button aria-label="إغلاق" id="lbClose">✕</button>
+      <img alt="" id="lbImg">
+    </dialog>
+  </section>
+
+  <section class="section" id="prices">
+    <h2>الأسعار</h2>
+    <p class="lead">اختر الصيغة الأقرب لمناسبتك، ونعدّلوها معك حسب الحاجة.</p>
+    <!-- بدّل الأسعار والخدمات بالحقيقية -->
+    <div class="plans">
+      <article class="plan">
+        <h3>الأساسية</h3>
+        <p class="cap"><strong>200 شخص</strong><span>100 رجل و100 امرأة</span></p>
+        <p class="price">000 000 <small>دج</small></p>
+        <ul>
+          <li>القاعة مع الطاولات والكراسي</li>
+          <li>الإضاءة العادية</li>
+          <li>الصوتيات</li>
+        </ul>
+        <a class="btn btn-line" href="#booking">احجز هذه الصيغة</a>
+      </article>
+      <article class="plan featured">
+        <h3>المميزة</h3>
+        <p class="cap"><strong>400 شخص</strong><span>200 رجل و200 امرأة</span></p>
+        <p class="price">000 000 <small>دج</small></p>
+        <ul>
+          <li>كل ما في الأساسية</li>
+          <li>ديكور المنصة</li>
+          <li>إضاءة الأفراح</li>
+          <li>استقبال الضيوف</li>
+        </ul>
+        <a class="btn btn-gold" href="#booking">احجز هذه الصيغة</a>
+      </article>
+      <article class="plan">
+        <h3>VIP</h3>
+        <p class="cap"><strong>500 شخص</strong><span>300 رجل و200 امرأة</span></p>
+        <p class="price">000 000 <small>دج</small></p>
+        <ul>
+          <li>كل ما في المميزة</li>
+          <li>تنسيق كامل للمناسبة</li>
+          <li>خدمة الضيافة</li>
+          <li>أولوية في اختيار التاريخ</li>
+        </ul>
+        <a class="btn btn-line" href="#booking">احجز هذه الصيغة</a>
+      </article>
+    </div>
+    <p class="note">الأسعار تختلف حسب التاريخ وعدد المدعوين.</p>
+  </section>
+
+  <section class="booking" id="booking">
+    <div class="intro">
+      <h2>احجز تاريخ مناسبتك</h2>
+      <p data-i18n-html="bookIntro">عمّر المعلومات وبعد الضغط على الزر تتحوّل مباشرة إلى واتساب برسالة جاهزة، ونرجعو لك باش نأكدو التاريخ.</p>
+      <ul class="steps">
+        <li>تعمّر الاستمارة</li>
+        <li>تُرسل لنا الرسالة على واتساب</li>
+        <li>نأكدو لك التاريخ ونحددو موعد الزيارة</li>
+      </ul>
+    </div>
+
+    <form class="card" id="bookingForm" novalidate>
+      <div class="field">
+        <label for="name">الاسم الكامل</label>
+        <input id="name" name="name" type="text" required autocomplete="name" placeholder="مثال: أمينة بن علي">
+      </div>
+      <div class="field">
+        <label for="phone">رقم الهاتف</label>
+        <input id="phone" name="phone" type="tel" required inputmode="tel" autocomplete="tel" dir="ltr" placeholder="05 / 06 / 07 ..." pattern="[0-9+\s]{9,15}">
+      </div>
+      <div class="field">
+        <label for="type">نوع المناسبة</label>
+        <select id="type" name="type" required>
+          <option value="">اختر...</option>
+          <option value="عرس">عرس</option>
+          <option value="خطوبة">خطوبة</option>
+          <option value="عيد ميلاد">عيد ميلاد</option>
+          <option value="ختان">ختان</option>
+          <option value="حفل تخرج">حفل تخرج</option>
+          <option value="مناسبة أخرى">مناسبة أخرى</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="date">تاريخ المناسبة</label>
+        <input id="date" name="date" type="date" required>
+      </div>
+      <div class="field">
+        <label for="guests">عدد المدعوين تقريبًا</label>
+        <input id="guests" name="guests" type="number" min="10" max="2000" required inputmode="numeric" placeholder="مثال: 250">
+      </div>
+      <div class="field">
+        <label for="time">الفترة</label>
+        <select id="time" name="time">
+          <option value="نهارًا">نهارًا</option>
+          <option value="مساءً">مساءً</option>
+          <option value="ليلاً">ليلاً</option>
+        </select>
+      </div>
+      <div class="field full">
+        <label for="notes">ملاحظات (اختياري)</label>
+        <textarea id="notes" name="notes" placeholder="أي طلب خاص: ديكور، صوتيات، منصة..."></textarea>
+      </div>
+      <div class="submit-row">
+        <button type="submit">أرسل الطلب عبر واتساب</button>
+        <span class="hint">لا يتم الحجز نهائيًا إلا بعد التأكيد منا.</span>
+      </div>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+  <section class="section" id="account">
+    <h2>حسابي</h2>
+    <p class="lead">بياناتك الشخصية وحجوزاتك في مكان واحد.</p>
+
+    <div class="box login-needed" id="accOut">
+      <p>سجّل الدخول باش تشوف حجوزاتك وتعدّل بياناتك.</p>
+      <a class="btn btn-gold" href="#" data-auth>تسجيل الدخول أو حساب جديد</a>
+    </div>
+
+    <div class="acc-grid" id="accIn" hidden>
+      <div class="box">
+        <h3>بياناتي</h3>
+        <form class="card" id="profileForm" novalidate>
+          <div class="field"><label for="pfName">الاسم الكامل</label>
+            <input id="pfName" type="text" required autocomplete="name"></div>
+          <div class="field"><label for="pfPhone">رقم الهاتف</label>
+            <input id="pfPhone" type="tel" required inputmode="tel" dir="ltr"></div>
+          <div class="field full"><label for="pfEmail">البريد الإلكتروني</label>
+            <input id="pfEmail" type="email" readonly dir="ltr"></div>
+          <div class="submit-row">
+            <button class="btn btn-gold" type="submit">حفظ التعديلات</button>
+            <span class="hint" id="pfMsg" role="status"></span>
+          </div>
+        </form>
+      </div>
+      <div class="box">
+        <h3>حجوزاتي</h3>
+        <ul class="bk-list" id="bkList"></ul>
+        <p class="empty" id="bkEmpty">ما عندك حتى حجز دابا. عمّر فورم الحجز وراه يظهر هنا.</p>
+        <p class="hint" style="margin-top:14px">التأكيد النهائي للحجز يتم من القاعة عبر واتساب.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dialog class="auth" id="authDialog" aria-labelledby="authTitle">
+  <button class="auth-close" type="button" id="authClose" aria-label="إغلاق">✕</button>
+
+  <section id="viewAuth">
+    <h3 id="authTitle">حسابك في قاعة لينا</h3>
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" id="tabLogin" aria-selected="true">تسجيل الدخول</button>
+      <button type="button" role="tab" id="tabSignup" aria-selected="false">حساب جديد</button>
+    </div>
+
+    <form id="loginForm" novalidate>
+      <div class="field"><label for="liEmail">البريد الإلكتروني</label>
+        <input id="liEmail" type="email" required autocomplete="email" dir="ltr"></div>
+      <div class="field"><label for="liPass">كلمة السر</label>
+        <input id="liPass" type="password" required autocomplete="current-password" dir="ltr"></div>
+      <button class="btn btn-gold" type="submit">دخول</button>
+    </form>
+
+    <form id="signupForm" novalidate hidden>
+      <div class="field"><label for="suName">الاسم الكامل</label>
+        <input id="suName" type="text" required autocomplete="name"></div>
+      <div class="field"><label for="suPhone">رقم الهاتف</label>
+        <input id="suPhone" type="tel" required inputmode="tel" autocomplete="tel" dir="ltr"></div>
+      <div class="field"><label for="suEmail">البريد الإلكتروني</label>
+        <input id="suEmail" type="email" required autocomplete="email" dir="ltr"></div>
+      <div class="field"><label for="suPass">كلمة السر (6 أحرف على الأقل)</label>
+        <input id="suPass" type="password" required minlength="6" autocomplete="new-password" dir="ltr"></div>
+      <button class="btn btn-gold" type="submit">إنشاء الحساب</button>
+    </form>
+
+    <p class="msg" id="authMsg" role="alert"></p>
+    <p class="fine">الحساب يُحفظ في هذا المتصفح فقط. إذا غيّرت الهاتف أو المتصفح، تحتاج تنشئ حسابًا من جديد.</p>
+  </section>
+
+  <section id="viewAccount" hidden>
+    <h3>حسابي</h3>
+    <div class="account">
+      <dl>
+        <dt>الاسم</dt><dd id="acName"></dd>
+        <dt>الهاتف</dt><dd id="acPhone" dir="ltr"></dd>
+        <dt>البريد</dt><dd id="acEmail" dir="ltr"></dd>
+      </dl>
+      <a class="btn btn-gold" href="#account" id="acGo" style="text-align:center">حجوزاتي وبياناتي</a>
+      <a class="btn btn-line" href="#booking" id="acBook" style="text-align:center">احجز الآن</a>
+      <button class="btn btn-line" type="button" id="logoutBtn">تسجيل الخروج</button>
+    </div>
+  </section>
+</dialog>
+
+<a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener">واتساب</a>
+
+<footer id="contact">
+  <div class="contact-links">
+    <a href="https://www.instagram.com/salle_des_fete_lina/" target="_blank" rel="noopener" aria-label="حساب إنستغرام">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/>
+      </svg>
+      تابعنا على إنستغرام
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=100065382642960&amp;locale=ar_AR" target="_blank" rel="noopener" aria-label="صفحة فيسبوك">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21h3z"/>
+      </svg>
+      تابعنا على فيسبوك
+    </a>
+    <a href="https://www.tiktok.com/@salle.des.fte.lin" target="_blank" rel="noopener" aria-label="حساب تيك توك">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M16.6 3c.3 2.3 1.6 3.7 3.9 3.9v3c-1.4.1-2.7-.3-3.9-1.1v5.9c0 3.8-3.1 5.6-6 5-2.5-.5-4.2-2.8-3.8-5.4.4-2.6 2.8-4.3 5.4-3.9v3.1c-1.5-.4-2.8.5-3 1.8-.2 1.5 1 2.6 2.4 2.5 1.2-.1 2-1 2-2.3V3h3z"/>
+      </svg>
+      تابعنا على تيك توك
+    </a>
+    <a href="#" id="waFooter" target="_blank" rel="noopener">راسلنا على واتساب</a>
+  </div>
+  <p>© قاعة الحفلات لينا، بئر توتة</p>
+</footer>
+
+<script>
+  const btn = document.getElementById('menuBtn');
+  const nav = document.getElementById('nav');
+  btn.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+  nav.addEventListener('click', e => {
+    if (e.target.tagName === 'A') { nav.classList.remove('open'); btn.setAttribute('aria-expanded', false); }
+  });
+
+  /* ===== تكبير صور المعرض ===== */
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  document.querySelectorAll('.shot').forEach(b => b.addEventListener('click', () => {
+    const img = b.querySelector('img');
+    if (!img) return;
+    lbImg.src = img.currentSrc || img.src;
+    lbImg.alt = img.alt;
+    lb.showModal();
+  }));
+  document.getElementById('lbClose').addEventListener('click', () => lb.close());
+  lb.addEventListener('click', e => { if (e.target === lb) lb.close(); });
+
+  /* ===== تسجيل الدخول =====
+     الحسابات تُحفظ في متصفح الزائر فقط (localStorage).
+     للحسابات الحقيقية المشتركة بين الأجهزة نحتاج خادمًا (مثل Firebase). */
+  const mem = {};
+  const store = {
+    get(k, d){ try{ const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); }catch(e){ return k in mem ? mem[k] : d; } },
+    set(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){ mem[k] = v; } },
+    del(k){ try{ localStorage.removeItem(k); }catch(e){ delete mem[k]; } }
+  };
+  async function hashPass(p){
+    if (window.crypto && crypto.subtle) {
+      const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode('lina:' + p));
+      return Array.from(new Uint8Array(b)).map(x => x.toString(16).padStart(2, '0')).join('');
+    }
+    return btoa(encodeURIComponent('lina:' + p));
+  }
+
+
+  /* ===== اللغة / Langue =====
+     النصوص العربية في الصفحة هي الأصل، والقاموس FR يحمل الترجمة الفرنسية.
+     اللغة تُحفظ في المتصفح، وفي حساب المستخدم إن كان مسجّلًا. */
+  const FR = {
+ "قاعة الحفلات لينا | بئر توتة": "Salle des Fêtes Lina | Birtouta",
+ "قاعة الحفلات لينا": "Salle des Fêtes Lina",
+ "القائمة": "Menu",
+ "القائمة الرئيسية": "Menu principal",
+ "الرئيسية": "Accueil",
+ "المعرض": "Galerie",
+ "الحجز": "Réservation",
+ "حسابي": "Mon compte",
+ "الأسعار": "Tarifs",
+ "تواصل معنا": "Contact",
+ "تسجيل الدخول": "Se connecter",
+ "أفضل قاعة حفلات في المنطقة، بدون منازع": "La meilleure salle des fêtes de la région, sans rival",
+ "احجز موعدك": "Réserver ma date",
+ "شاهد القاعة": "Voir la salle",
+ "قاعة لينا، بئر توتة": "Salle Lina, Birtouta",
+ "قاعة لينا من الداخل": "L’intérieur de la salle Lina",
+ "مناسباتنا": "Nos événements",
+ "أعراس": "Mariages",
+ "خطوبة": "Fiançailles",
+ "أعياد ميلاد": "Anniversaires",
+ "ختان": "Circoncisions",
+ "حفلات تخرج": "Fêtes de remise de diplômes",
+ "القاعة، الموائد، وأطباق مطبخنا. اضغط على أي صورة لتكبيرها.": "La salle, les tables et les plats de notre cuisine. Cliquez sur une image pour l’agrandir.",
+ "القاعة من الداخل": "L’intérieur de la salle",
+ "فريق المطبخ": "L’équipe de cuisine",
+ "طبق سلطة مزين بالورود": "Assiette de salade décorée de fleurs",
+ "طبق اللحم بالزيتون والكفتة المحشوة": "Plat de viande aux olives et kefta farcie",
+ "مائدة مجهزة بالأطباق والخبز": "Table dressée avec plats et pain",
+ "صفوف أطباق السلطة": "Rangées d’assiettes de salade",
+ "حلوى بالمكسرات مع العسل": "Pâtisserie aux noix et au miel",
+ "حلوى بالمكسرات والكراميل": "Pâtisserie aux noix et au caramel",
+ "إغلاق": "Fermer",
+ "اختر الصيغة الأقرب لمناسبتك، ونعدّلوها معك حسب الحاجة.": "Choisissez la formule la plus proche de votre événement, nous l’adaptons avec vous selon vos besoins.",
+ "الأساسية": "Essentielle",
+ "المميزة": "Premium",
+ "200 شخص": "200 personnes",
+ "100 رجل و100 امرأة": "100 hommes et 100 femmes",
+ "400 شخص": "400 personnes",
+ "200 رجل و200 امرأة": "200 hommes et 200 femmes",
+ "500 شخص": "500 personnes",
+ "300 رجل و200 امرأة": "300 hommes et 200 femmes",
+ "دج": "DA",
+ "القاعة مع الطاولات والكراسي": "La salle avec tables et chaises",
+ "الإضاءة العادية": "Éclairage standard",
+ "الصوتيات": "Sonorisation",
+ "كل ما في الأساسية": "Tout ce qui est inclus dans l’Essentielle",
+ "ديكور المنصة": "Décor de l’estrade",
+ "إضاءة الأفراح": "Éclairage de fête",
+ "استقبال الضيوف": "Accueil des invités",
+ "كل ما في المميزة": "Tout ce qui est inclus dans la Premium",
+ "تنسيق كامل للمناسبة": "Coordination complète de l’événement",
+ "خدمة الضيافة": "Service de réception",
+ "أولوية في اختيار التاريخ": "Priorité dans le choix de la date",
+ "احجز هذه الصيغة": "Réserver cette formule",
+ "الأسعار تختلف حسب التاريخ وعدد المدعوين.": "Les tarifs varient selon la date et le nombre d’invités.",
+ "احجز تاريخ مناسبتك": "Réservez la date de votre événement",
+ "تعمّر الاستمارة": "Vous remplissez le formulaire",
+ "تُرسل لنا الرسالة على واتساب": "Vous nous envoyez le message sur WhatsApp",
+ "نأكدو لك التاريخ ونحددو موعد الزيارة": "Nous confirmons la date et fixons un rendez-vous de visite",
+ "الاسم الكامل": "Nom complet",
+ "رقم الهاتف": "Numéro de téléphone",
+ "نوع المناسبة": "Type d’événement",
+ "تاريخ المناسبة": "Date de l’événement",
+ "عدد المدعوين تقريبًا": "Nombre d’invités (approximatif)",
+ "الفترة": "Période",
+ "ملاحظات (اختياري)": "Remarques (facultatif)",
+ "مثال: أمينة بن علي": "Ex. : Amina Benali",
+ "مثال: 250": "Ex. : 250",
+ "أي طلب خاص: ديكور، صوتيات، منصة...": "Toute demande particulière : décor, sono, estrade…",
+ "اختر...": "Choisir…",
+ "عرس": "Mariage",
+ "عيد ميلاد": "Anniversaire",
+ "حفل تخرج": "Remise de diplômes",
+ "مناسبة أخرى": "Autre événement",
+ "نهارًا": "En journée",
+ "مساءً": "En soirée",
+ "ليلاً": "De nuit",
+ "أرسل الطلب عبر واتساب": "Envoyer la demande via WhatsApp",
+ "لا يتم الحجز نهائيًا إلا بعد التأكيد منا.": "La réservation n’est définitive qu’après notre confirmation.",
+ "بياناتك الشخصية وحجوزاتك في مكان واحد.": "Vos informations personnelles et vos réservations au même endroit.",
+ "سجّل الدخول باش تشوف حجوزاتك وتعدّل بياناتك.": "Connectez-vous pour voir vos réservations et modifier vos informations.",
+ "تسجيل الدخول أو حساب جديد": "Se connecter ou créer un compte",
+ "بياناتي": "Mes informations",
+ "البريد الإلكتروني": "E-mail",
+ "حفظ التعديلات": "Enregistrer les modifications",
+ "حجوزاتي": "Mes réservations",
+ "ما عندك حتى حجز دابا. عمّر فورم الحجز وراه يظهر هنا.": "Vous n’avez aucune réservation pour le moment. Remplissez le formulaire de réservation et elle apparaîtra ici.",
+ "التأكيد النهائي للحجز يتم من القاعة عبر واتساب.": "La confirmation définitive de la réservation est faite par la salle via WhatsApp.",
+ "حسابك في قاعة لينا": "Votre compte à la salle Lina",
+ "حساب جديد": "Nouveau compte",
+ "كلمة السر": "Mot de passe",
+ "دخول": "Connexion",
+ "كلمة السر (6 أحرف على الأقل)": "Mot de passe (6 caractères minimum)",
+ "إنشاء الحساب": "Créer le compte",
+ "الحساب يُحفظ في هذا المتصفح فقط. إذا غيّرت الهاتف أو المتصفح، تحتاج تنشئ حسابًا من جديد.": "Le compte est enregistré uniquement dans ce navigateur. Si vous changez de téléphone ou de navigateur, vous devrez recréer un compte.",
+ "الاسم": "Nom",
+ "الهاتف": "Téléphone",
+ "البريد": "E-mail",
+ "حجوزاتي وبياناتي": "Mes réservations et informations",
+ "احجز الآن": "Réserver maintenant",
+ "تسجيل الخروج": "Se déconnecter",
+ "واتساب": "WhatsApp",
+ "حساب إنستغرام": "Compte Instagram",
+ "صفحة فيسبوك": "Page Facebook",
+ "حساب تيك توك": "Compte TikTok",
+ "تابعنا على إنستغرام": "Suivez-nous sur Instagram",
+ "تابعنا على فيسبوك": "Suivez-nous sur Facebook",
+ "تابعنا على تيك توك": "Suivez-nous sur TikTok",
+ "راسلنا على واتساب": "Écrivez-nous sur WhatsApp",
+ "© قاعة الحفلات لينا، بئر توتة": "© Salle des Fêtes Lina, Birtouta",
+ "مرحبًا": "Bonjour",
+ "حذف": "Supprimer",
+ "تأكيد الحذف": "Confirmer la suppression",
+ "أُرسل عبر واتساب، بانتظار التأكيد": "Envoyé via WhatsApp, en attente de confirmation",
+ "عمّر الاسم والهاتف.": "Veuillez renseigner le nom et le téléphone.",
+ "تم حفظ التعديلات.": "Modifications enregistrées.",
+ "عمّر كل الخانات بشكل صحيح.": "Veuillez remplir correctement tous les champs.",
+ "هذا البريد مسجّل من قبل. جرّب تسجيل الدخول.": "Cet e-mail est déjà enregistré. Essayez de vous connecter.",
+ "البريد أو كلمة السر غير صحيحة.": "E-mail ou mot de passe incorrect.",
+ "تم تسجيل الخروج.": "Vous êtes déconnecté.",
+ "عمّر الخانات المطلوبة من فضلك.": "Merci de remplir les champs obligatoires.",
+ "تم فتح واتساب وسجّلنا الطلب في حسابي. اضغط إرسال باش توصلنا الرسالة.": "WhatsApp est ouvert et la demande a été enregistrée dans votre compte. Appuyez sur Envoyer pour nous transmettre le message.",
+ "تم فتح واتساب. اضغط إرسال باش توصلنا الرسالة. سجّل الدخول باش تتابع طلباتك في حسابي.": "WhatsApp est ouvert. Appuyez sur Envoyer pour nous transmettre le message. Connectez-vous pour suivre vos demandes dans Mon compte."
+};
+  const FR_HTML = {
+    heroP: "Au cœur de <strong>Birtouta</strong>, là où la famille se réunit et où la joie est complète, la salle Lina est la destination idéale pour une fête dont on se souviendra longtemps. De la première entrée des mariés jusqu’au dernier éclat de rire, nous soignons chaque détail.",
+    bookIntro: "Remplissez les informations : en cliquant sur le bouton, vous êtes redirigé vers WhatsApp avec un message prêt à envoyer, et nous revenons vers vous pour confirmer la date."
+  };
+  let lang = store.get('lina_lang', 'ar') === 'fr' ? 'fr' : 'ar';
+  const t = k => (lang === 'fr' && FR[k] !== undefined) ? FR[k] : k;
+  const norm = x => x.replace(/\s+/g, ' ').trim();
+
+  const i18nText = [], i18nAttr = [], i18nHtml = [];
+  (function collect(){
+    const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    let n;
+    while ((n = w.nextNode())) {
+      if (n.parentElement.closest('script,style,[data-i18n-html]')) continue;
+      const k = norm(n.nodeValue);
+      if (k && FR[k] !== undefined) i18nText.push({ n, k, orig: n.nodeValue });
+    }
+    document.querySelectorAll('[placeholder],[alt],[aria-label],[title]').forEach(e => {
+      ['placeholder', 'alt', 'aria-label', 'title'].forEach(a => {
+        const v = e.getAttribute(a);
+        if (v && FR[norm(v)] !== undefined) i18nAttr.push({ e, a, k: norm(v), orig: v });
+      });
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(e => i18nHtml.push({ e, key: e.dataset.i18nHtml, orig: e.innerHTML }));
+  })();
+  const origTitle = document.title;
+
+  function applyLang(l){
+    lang = l === 'fr' ? 'fr' : 'ar';
+    const fr = lang === 'fr';
+    document.documentElement.lang = lang;
+    document.documentElement.dir = fr ? 'ltr' : 'rtl';
+    document.title = fr ? FR[norm(origTitle)] : origTitle;
+    i18nText.forEach(o => { o.n.nodeValue = fr ? o.orig.replace(o.k, FR[o.k]) : o.orig; });
+    i18nAttr.forEach(o => o.e.setAttribute(o.a, fr ? FR[o.k] : o.orig));
+    i18nHtml.forEach(o => { o.e.innerHTML = fr ? FR_HTML[o.key] : o.orig; });
+    const lb = document.getElementById('langBtn');
+    lb.textContent = fr ? 'العربية' : 'Français';
+    lb.lang = fr ? 'ar' : 'fr';
+    lb.setAttribute('aria-label', fr ? 'العربية' : 'Français');
+    updateWA();
+    authMsg.textContent = '';
+    status.textContent = '';
+    refreshAuthUI();
+  }
+  function setLang(l){
+    store.set('lina_lang', l);
+    const u = currentUser();
+    if (u) { const users = store.get('lina_users', {}); users[u.email].lang = l; store.set('lina_users', users); }
+    applyLang(l);
+  }
+  /* بعد الدخول أو إنشاء الحساب: نستعمل اللغة المحفوظة في حساب المستخدم */
+  function afterAuth(){
+    const u = currentUser();
+    if (u) {
+      const users = store.get('lina_users', {});
+      if (users[u.email].lang) { store.set('lina_lang', users[u.email].lang); applyLang(users[u.email].lang); return; }
+      users[u.email].lang = lang; store.set('lina_users', users);
+    }
+    applyLang(lang);
+  }
+  document.getElementById('langBtn').addEventListener('click', () => setLang(lang === 'fr' ? 'ar' : 'fr'));
+
+  const authDlg = document.getElementById('authDialog');
+  const authMsg = document.getElementById('authMsg');
+  const loginForm = document.getElementById('loginForm');
+  const signupForm = document.getElementById('signupForm');
+  const tabLogin = document.getElementById('tabLogin');
+  const tabSignup = document.getElementById('tabSignup');
+
+  function say(text, ok){ authMsg.textContent = text || ''; authMsg.classList.toggle('ok', !!ok); }
+  function showTab(which){
+    const login = which === 'login';
+    loginForm.hidden = !login; signupForm.hidden = login;
+    tabLogin.setAttribute('aria-selected', login); tabSignup.setAttribute('aria-selected', !login);
+    say('');
+  }
+  function currentUser(){
+    const email = store.get('lina_session', null);
+    const users = store.get('lina_users', {});
+    return email && users[email] ? Object.assign({ email }, users[email]) : null;
+  }
+  function refreshAuthUI(){
+    const u = currentUser();
+    document.querySelectorAll('.login').forEach(a => {
+      a.textContent = u ? t('مرحبًا') + ' ' + u.name.split(' ')[0] : t('تسجيل الدخول');
+    });
+    document.getElementById('viewAuth').hidden = !!u;
+    document.getElementById('viewAccount').hidden = !u;
+    if (u) {
+      document.getElementById('acName').textContent = u.name;
+      document.getElementById('acPhone').textContent = u.phone;
+      document.getElementById('acEmail').textContent = u.email;
+      const n = document.getElementById('name'), p = document.getElementById('phone');
+      if (n && !n.value) n.value = u.name;
+      if (p && !p.value) p.value = u.phone;
+    }
+    renderAccount();
+  }
+
+  /* ===== حسابي: البيانات والحجوزات ===== */
+  function getBookings(email){ return (store.get('lina_bookings', {})[email]) || []; }
+  function addBooking(email, b){
+    const all = store.get('lina_bookings', {});
+    all[email] = [b].concat(all[email] || []);
+    store.set('lina_bookings', all);
+  }
+  function removeBooking(email, id){
+    const all = store.get('lina_bookings', {});
+    all[email] = (all[email] || []).filter(x => x.id !== id);
+    store.set('lina_bookings', all);
+  }
+  function el(tag, cls, text){
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text !== undefined) n.textContent = text;
+    return n;
+  }
+  function renderAccount(){
+    const u = currentUser();
+    document.getElementById('accOut').hidden = !!u;
+    document.getElementById('accIn').hidden = !u;
+    if (!u) return;
+    document.getElementById('pfName').value = u.name;
+    document.getElementById('pfPhone').value = u.phone;
+    document.getElementById('pfEmail').value = u.email;
+    const list = document.getElementById('bkList');
+    list.textContent = '';
+    const items = getBookings(u.email);
+    document.getElementById('bkEmpty').hidden = items.length > 0;
+    items.forEach(b => {
+      const li = el('li', 'bk');
+      const fr = lang === 'fr';
+      li.appendChild(el('strong', '', t(b.type) + (fr ? ', ' : '، ') + b.date));
+      li.appendChild(el('span', 'meta', fr ? t(b.time) + ', environ ' + b.guests + ' personnes' : b.time + '، حوالي ' + b.guests + ' شخص'));
+      li.appendChild(el('span', 'badge', t('أُرسل عبر واتساب، بانتظار التأكيد')));
+      const del = el('button', 'del', t('حذف'));
+      del.type = 'button';
+      let timer;
+      del.addEventListener('click', () => {
+        if (del.classList.contains('sure')) { removeBooking(u.email, b.id); renderAccount(); return; }
+        del.classList.add('sure'); del.textContent = t('تأكيد الحذف');
+        timer = setTimeout(() => { del.classList.remove('sure'); del.textContent = t('حذف'); }, 3000);
+      });
+      li.appendChild(del);
+      list.appendChild(li);
+    });
+  }
+
+  document.getElementById('profileForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const f = e.target, msg = document.getElementById('pfMsg');
+    if (!f.checkValidity()) { f.reportValidity(); msg.textContent = t('عمّر الاسم والهاتف.'); return; }
+    const u = currentUser(); if (!u) return;
+    const users = store.get('lina_users', {});
+    users[u.email].name = document.getElementById('pfName').value.trim();
+    users[u.email].phone = document.getElementById('pfPhone').value.trim();
+    store.set('lina_users', users);
+    refreshAuthUI();
+    document.getElementById('pfMsg').textContent = t('تم حفظ التعديلات.');
+  });
+
+  document.querySelectorAll('[data-auth]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    nav.classList.remove('open'); btn.setAttribute('aria-expanded', false);
+    refreshAuthUI(); showTab('login');
+    authDlg.showModal();
+  }));
+  document.getElementById('authClose').addEventListener('click', () => authDlg.close());
+  authDlg.addEventListener('click', e => { if (e.target === authDlg) authDlg.close(); });
+  ['acBook','acGo'].forEach(id => document.getElementById(id).addEventListener('click', () => authDlg.close()));
+  tabLogin.addEventListener('click', () => showTab('login'));
+  tabSignup.addEventListener('click', () => showTab('signup'));
+
+  signupForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!signupForm.checkValidity()) { signupForm.reportValidity(); say(t('عمّر كل الخانات بشكل صحيح.')); return; }
+    const email = document.getElementById('suEmail').value.trim().toLowerCase();
+    const users = store.get('lina_users', {});
+    if (users[email]) { say(t('هذا البريد مسجّل من قبل. جرّب تسجيل الدخول.')); return; }
+    users[email] = {
+      name: document.getElementById('suName').value.trim(),
+      phone: document.getElementById('suPhone').value.trim(),
+      hash: await hashPass(document.getElementById('suPass').value),
+      lang: lang
+    };
+    store.set('lina_users', users);
+    store.set('lina_session', email);
+    signupForm.reset(); afterAuth();
+  });
+
+  loginForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const email = document.getElementById('liEmail').value.trim().toLowerCase();
+    const users = store.get('lina_users', {});
+    const h = await hashPass(document.getElementById('liPass').value);
+    if (!users[email] || users[email].hash !== h) { say(t('البريد أو كلمة السر غير صحيحة.')); return; }
+    store.set('lina_session', email);
+    loginForm.reset(); afterAuth();
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    store.del('lina_session'); refreshAuthUI(); showTab('login'); say(t('تم تسجيل الخروج.'), true);
+  });
+  /* ===== الحجز عبر واتساب =====
+     بدّل الرقم بالرقم الحقيقي للقاعة، بصيغة دولية بدون + ولا 00
+     مثال: 0555123456 يصبح 213555123456 */
+  const WA_NUMBER = "213555166137";
+
+  function updateWA(){
+    const hello = lang === 'fr'
+      ? "Bonjour, je souhaite me renseigner sur la salle Lina."
+      : "السلام عليكم، حبيت نستفسر على قاعة لينا.";
+    const url = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(hello);
+    document.getElementById('waFloat').href = url;
+    document.getElementById('waFooter').href = url;
+  }
+
+  const form = document.getElementById('bookingForm');
+  const status = document.getElementById('status');
+  const dateInput = document.getElementById('date');
+  dateInput.min = new Date().toISOString().split('T')[0];
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      status.textContent = t("عمّر الخانات المطلوبة من فضلك.");
+      return;
+    }
+    const d = Object.fromEntries(new FormData(form));
+    const msg = (lang === 'fr' ? [
+      "Bonjour, je souhaite réserver la salle Lina :",
+      "Nom : " + d.name,
+      "Téléphone : " + d.phone,
+      "Événement : " + t(d.type),
+      "Date : " + d.date,
+      "Période : " + t(d.time),
+      "Nombre d’invités : " + d.guests,
+      d.notes ? "Remarques : " + d.notes : ""
+    ] : [
+      "السلام عليكم، حبيت نحجز في قاعة لينا:",
+      "الاسم: " + d.name,
+      "الهاتف: " + d.phone,
+      "المناسبة: " + d.type,
+      "التاريخ: " + d.date,
+      "الفترة: " + d.time,
+      "عدد المدعوين: " + d.guests,
+      d.notes ? "ملاحظات: " + d.notes : ""
+    ]).join("\n").trim();
+
+    window.open("https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg), "_blank", "noopener");
+    const user = currentUser();
+    if (user) {
+      addBooking(user.email, {
+        id: Date.now().toString(36), name: d.name, phone: d.phone, type: d.type,
+        date: d.date, time: d.time, guests: d.guests, notes: d.notes || '', createdAt: Date.now()
+      });
+      renderAccount();
+      status.textContent = t("تم فتح واتساب وسجّلنا الطلب في حسابي. اضغط إرسال باش توصلنا الرسالة.");
+    } else {
+      status.textContent = t("تم فتح واتساب. اضغط إرسال باش توصلنا الرسالة. سجّل الدخول باش تتابع طلباتك في حسابي.");
+    }
+  });
+
+  applyLang(lang);
+</script>
+</body>
+</html>
